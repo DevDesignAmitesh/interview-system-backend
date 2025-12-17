@@ -2,6 +2,7 @@ import { type Response } from "express";
 import { sign, verify } from "jsonwebtoken";
 import type { role } from "@repo/db/db";
 import { ZodError } from "zod";
+import { WebSocket } from "ws";
 
 if (!process.env.JWT_SECRET) {
   throw new Error("JWT_SECRET not found");
@@ -64,4 +65,21 @@ export const zodErrorMessage = ({ error }: { error: ZodError }) => {
   return error.issues
     .map((er) => `${er.path.join(".")}: ${er.message}`)
     .join(", ");
+};
+
+export const websocketResponseTemplate = ({
+  ws,
+  event,
+  data,
+}: {
+  ws: WebSocket;
+  event: string;
+  data: any;
+}) => {
+  ws.send(
+    JSON.stringify({
+      event,
+      data,
+    })
+  );
 };

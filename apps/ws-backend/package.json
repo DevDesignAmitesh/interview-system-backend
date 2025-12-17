@@ -1,25 +1,18 @@
 {
-  "name": "@repo/utils",
+  "name": "ws-backend",
   "module": "index.ts",
   "type": "module",
   "private": true,
   "devDependencies": {
     "@types/bun": "latest",
+    "@repo/utils": "workspace:*",
     "@repo/db": "workspace:*"
   },
   "peerDependencies": {
     "typescript": "^5"
   },
   "dependencies": {
-    "@types/express": "^5.0.6",
-    "@types/jsonwebtoken": "^9.0.10",
     "@types/ws": "^8.18.1",
-    "express": "^5.2.1",
-    "jsonwebtoken": "^9.0.3",
-    "ws": "^8.18.3",
-    "zod": "^4.2.1"
-  },
-  "exports": {
-    "./utils": "./index.ts"
+    "ws": "^8.18.3"
   }
 }

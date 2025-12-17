@@ -70,7 +70,7 @@ export const startClassRequest = async (req: Request, res: Response) => {
         success: true,
         data: {
           classId: updatedClass.id,
-          startedAt: updatedClass.startedAt,
+          startedAt: updatedClass.startedAt?.toISOString(),
         },
       },
     });
